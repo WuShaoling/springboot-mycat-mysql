@@ -1,0 +1,41 @@
+version: 2
+services:
+  mysql-1:
+    image: mysql:5.7.24
+    hostname: wsl-mysql-1
+    volumes:
+    - '/root/mysql/mysql-1:/etc/mysql/mysql.conf.d'
+    environment:
+    - 'constraint:aliyun.node_index==(15)'
+    - MYSQL_ROOT_PASSWORD=root
+    restart: always
+    ports:
+    - '53306:3306/tcp'
+    labels:
+      aliyun.scale: '1'
+
+  mysql-2:
+    image: mysql:5.7.24
+    hostname: wsl-mysql-2
+    environment:
+    - 'constraint:aliyun.node_index==(15)'
+    - MYSQL_ROOT_PASSWORD=root
+    restart: always
+    volumes:
+    - '/root/mysql/mysql-2:/etc/mysql/mysql.conf.d'
+    ports:
+    - '53307:3306/tcp'
+    labels:
+      aliyun.scale: '1'
+
+  mysql-3:
+    image: mysql:5.7.24
+    hostname: wsl-mysql-3
+    environment:
+    - 'constraint:aliyun.node_index==(15)'
+    - MYSQL_ROOT_PASSWORD=root
+    restart: always
+    ports:
+    - '53308:3306/tcp'
+    labels:
+      aliyun.scale: '1'

@@ -1,0 +1,40 @@
+--mysql-master
+--grant replication slave on *.* to slave@172.20.11.5
+--identified by '123456';
+--flush privileges;
+--show master status;
+
+--mysql-slave
+--show master status;
+--change master to master_host = '172.20.11.8', master_user = 'slave',
+--master_password = '123456', master_log_file = 'mysql-bin.000003', master_log_pos = 1862;
+--stop slave;
+--reset slave;
+--start slave;
+--show slave status;
+
+--DROP TABLE IF EXISTS `customer`;
+--CREATE TABLE `customer` (
+--  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+--  `name` varchar(255) DEFAULT NULL,
+--  `province` varchar(255) DEFAULT NULL,
+--  PRIMARY KEY (`ID`)
+--) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+--DROP TABLE IF EXISTS `customer_addr`;
+--CREATE TABLE `customer_addr` (
+--  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+--  `customer_id` bigint(20) DEFAULT NULL,
+--  `addr` varchar(255) DEFAULT NULL,
+--  PRIMARY KEY (`ID`),
+--  UNIQUE KEY `customer_addr_ID_uindex` (`ID`)
+--) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+--DROP TABLE IF EXISTS `customer_orders`;
+--CREATE TABLE `customer_orders` (
+--  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+--  `customer_id` bigint(20) DEFAULT NULL,
+--  `order_name` varchar(255) DEFAULT NULL,
+--  PRIMARY KEY (`ID`),
+--  UNIQUE KEY `customer_orders_ID_uindex` (`ID`)
+--) ENGINE=InnoDB DEFAULT CHARSET=latin1;
