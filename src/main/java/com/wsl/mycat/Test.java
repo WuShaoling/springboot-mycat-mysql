@@ -10,7 +10,7 @@ public class Test {
     // static final String DB_URL = "jdbc:mysql://47.102.10.114:53310/TESTDB";
     static final String DB_URL = "jdbc:mysql://127.0.0.1:8066/business";
     static final String USER = "root";
-    static final String PASS = "12345678";
+    static final String PASS = "123456";
     static Connection conn = null;
     static Statement stmt = null;
 
