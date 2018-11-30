@@ -12,6 +12,7 @@
 <button type="button" onclick="addHotNewsData()">插入HotNews数据</button>
 <button type="button" onclick="addOrdersData()">插入Order数据</button>
 <button type="button" onclick="addTravelRecordData()">插入TravelRecord数据</button>
+<button type="button" onclick="addCustomerData()">插入Customer数据</button>
 <br/><br/>
 
 <button type="button" onclick="queryCompanyData()">查询Company数据</button>
@@ -19,6 +20,7 @@
 <button type="button" onclick="queryHotNewsData()">查询HotNews数据</button>
 <button type="button" onclick="queryOrdersData()">查询Order数据</button>
 <button type="button" onclick="queryTravelRecordData()">查询TravelRecord数据</button>
+<button type="button" onclick="queryCustomerData()">查询Customer数据</button>
 <br/><br/>
 
 <textarea id="result" rows="50" cols="150">
@@ -89,6 +91,18 @@
     });
   }
 
+  function addCustomerData() {
+    $.ajax({
+      url: '/add/customer',
+      type: 'get',
+      dataType: 'json',
+      success: function (data) {
+        console.log(data);
+        $("#result").append(JSON.stringify(data) + "\n");
+      }
+    });
+  }
+
   function queryCompanyData() {
     $.ajax({
       url: '/query/company',
@@ -140,6 +154,18 @@
   function queryTravelRecordData() {
     $.ajax({
       url: '/query/travelrecord',
+      type: 'get',
+      dataType: 'json',
+      success: function (data) {
+        console.log(data);
+        $("#result").append(JSON.stringify(data) + "\n");
+      }
+    });
+  }
+
+  function queryCustomerData() {
+    $.ajax({
+      url: '/query/customer',
       type: 'get',
       dataType: 'json',
       success: function (data) {

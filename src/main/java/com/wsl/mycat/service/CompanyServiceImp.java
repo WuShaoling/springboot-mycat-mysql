@@ -18,12 +18,13 @@ public class CompanyServiceImp implements CompanyService {
 
     @Override
     public String addData() {
-        for (int i = 1; i <= 20; i++) {
+        int n = 20;
+        for (int i = 1; i <= n; i++) {
             Company company = new Company();
             company.setName("company" + i);
             companyMapper.insertSelective(company);
         }
-        return "ok";
+        return "插入" + n + "条 company 数据成功";
     }
 
     @Override

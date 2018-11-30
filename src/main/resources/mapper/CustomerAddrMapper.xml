@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wsl.mycat.dao.mapper.CustomerAddrMapper">
+    <resultMap id="BaseResultMap" type="com.wsl.mycat.dao.entity.CustomerAddr">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <result column="customer_id" property="customerId" jdbcType="BIGINT"/>
+        <result column="addr" property="addr" jdbcType="VARCHAR"/>
+        <result column="customer_id" property="customerId" jdbcType="BIGINT"/>
+        <result column="addr" property="addr" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID, customer_id, addr
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from customer_addr
+        where ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from customer_addr
+        where ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.wsl.mycat.dao.entity.CustomerAddr">
+        insert into customer_addr (ID, customer_id, addr
+          )
+        values (#{id,jdbcType=BIGINT}, #{customerId,jdbcType=BIGINT}, #{addr,jdbcType=VARCHAR}
+          )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.wsl.mycat.dao.entity.CustomerAddr">
+        insert into customer_addr
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="customerId != null">
+                customer_id,
+            </if>
+            <if test="addr != null">
+                addr,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="customerId != null">
+                #{customerId,jdbcType=BIGINT},
+            </if>
+            <if test="addr != null">
+                #{addr,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.wsl.mycat.dao.entity.CustomerAddr">
+        update customer_addr
+        <set>
+            <if test="customerId != null">
+                customer_id = #{customerId,jdbcType=BIGINT},
+            </if>
+            <if test="addr != null">
+                addr = #{addr,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.wsl.mycat.dao.entity.CustomerAddr">
+        update customer_addr
+        set customer_id = #{customerId,jdbcType=BIGINT},
+          addr = #{addr,jdbcType=VARCHAR}
+        where ID = #{id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

@@ -18,12 +18,13 @@ public class HotNewsServiceImpl implements HotNewsService {
 
     @Override
     public String addData() {
-        for (int i = 1; i <= 20; i++) {
+        int n = 20;
+        for (int i = 1; i <= n; i++) {
             HotNews hotNews = new HotNews();
             hotNews.setTitle("title" + i);
             hotNewsMapper.insertSelective(hotNews);
         }
-        return "ok";
+        return "插入" + n + "条 HotNews 数据成功";
     }
 
     @Override

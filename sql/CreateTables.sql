@@ -47,3 +47,20 @@ CREATE TABLE `goods` (
   UNIQUE KEY `goods_ID_uindex` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE `customer` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `gender` int(11) DEFAULT 0,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `customer_addr`;
+CREATE TABLE `customer_addr` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `customer_id` bigint(20) DEFAULT NULL,
+  `addr` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `customer_addr_ID_uindex` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -1,10 +1,7 @@
 package com.wsl.mycat.controller;
 
 import com.wsl.mycat.error.ResponseMessage;
-import com.wsl.mycat.service.GoodsServiceImpl;
-import com.wsl.mycat.service.HotNewsServiceImpl;
-import com.wsl.mycat.service.OrdersServiceImpl;
-import com.wsl.mycat.service.TravelRecordServiceImpl;
+import com.wsl.mycat.service.*;
 import com.wsl.mycat.service.interfaces.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,6 +23,8 @@ public class AddDataController {
     private OrdersServiceImpl ordersService;
     @Autowired
     private TravelRecordServiceImpl travelRecordService;
+    @Autowired
+    private CustomerServiceImpl customerService;
 
     @GetMapping(value = "company")
     public ResponseMessage<String> addCompanyData() {
@@ -50,6 +49,11 @@ public class AddDataController {
     @GetMapping(value = "travelrecord")
     public ResponseMessage<String> addTravelRecordData() {
         return new ResponseMessage.Success<>(travelRecordService.addData());
+    }
+
+    @GetMapping(value = "customer")
+    public ResponseMessage<String> addCustomerData() {
+        return new ResponseMessage.Success<>(customerService.addData());
     }
 
 }

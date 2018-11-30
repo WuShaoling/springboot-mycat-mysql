@@ -18,12 +18,13 @@ public class TravelRecordServiceImpl implements TravelRecordService {
 
     @Override
     public String addData() {
-        for (int i = 1; i <= 20; i++) {
+        int n = 20;
+        for (int i = 1; i <= n; i++) {
             TravelRecord travelRecord = new TravelRecord();
             travelRecord.setArea(i % 5);
             travelRecordMapper.insertSelective(travelRecord);
         }
-        return "ok";
+        return "插入" + n + "条 TravelRecord 数据成功";
     }
 
     @Override

@@ -10,7 +10,7 @@ public class Test {
     // static final String DB_URL = "jdbc:mysql://47.102.10.114:53310/TESTDB";
     static final String DB_URL = "jdbc:mysql://127.0.0.1:8066/business";
     static final String USER = "root";
-    static final String PASS = "123456";
+    static final String PASS = "12345678";
     static Connection conn = null;
     static Statement stmt = null;
 
@@ -84,6 +84,26 @@ public class Test {
         stmt.close();
     }
 
+    public static void insertCustomer() throws SQLException {
+        stmt = conn.createStatement();
+        int zipcode;
+        for (int i = 1; i <= 50; i++) {
+            if (i % 2 == 0) {
+                zipcode = 100000;
+            } else {
+                zipcode = 100001;
+            }
+            String sql = "insert into customer(id, name, gender) values(" + i + ", \"name" + i + "\", " + zipcode + ")";
+            System.out.println(sql);
+            System.out.println(i + "-->" + stmt.execute(sql));
+
+            sql = "insert into customer_addr(id, customer_id, addr) values(" + i + "," + i + ",\"addr" + i + "\")";
+            System.out.println(sql);
+            System.out.println(i + "-->" + stmt.execute(sql));
+        }
+        stmt.close();
+    }
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         getConnect();
         insertCompany();
@@ -91,6 +111,7 @@ public class Test {
         insertHotNews();
         insertGoods();
         insertOrders();
+        insertCustomer();
         closeConnect();
     }
 

@@ -18,12 +18,13 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public String addData() {
-        for (int i = 1; i <= 20; i++) {
+        int n = 20;
+        for (int i = 1; i <= n; i++) {
             Goods goods = new Goods();
             goods.setName("good" + i);
             goodsMapper.insertSelective(goods);
         }
-        return "ok";
+        return "插入" + n + "条 Goods 数据成功";
     }
 
     @Override

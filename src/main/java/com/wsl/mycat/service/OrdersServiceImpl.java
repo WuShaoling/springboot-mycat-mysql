@@ -18,13 +18,14 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     public String addData() {
-        for (int i = 1; i <= 20; i++) {
+        int n = 20;
+        for (int i = 1; i <= n; i++) {
             Orders orders = new Orders();
             orders.setName("name" + i);
             orders.setAttributes("attribute" + i);
             ordersMapper.insertSelective(orders);
         }
-        return "ok";
+        return "插入" + n + "条 Orders 数据成功";
     }
 
     @Override
