@@ -4,178 +4,268 @@
     <meta charset="utf-8"/>
     <title>Mycat</title>
 </head>
-
 <body>
 
-<button type="button" onclick="addCompanyData()">插入Company数据</button>
-<button type="button" onclick="addGoodsData()">插入Goods数据</button>
-<button type="button" onclick="addHotNewsData()">插入HotNews数据</button>
-<button type="button" onclick="addOrdersData()">插入Order数据</button>
-<button type="button" onclick="addTravelRecordData()">插入TravelRecord数据</button>
-<button type="button" onclick="addCustomerData()">插入Customer数据</button>
-<br/><br/>
+<div style="float: left;width:30%;">
+    <label>清空数据</label><br/>
+    <button type="button" style="width: 150px" onclick="clearAllData()">清空数据</button>
+    <br/><br/>
 
-<button type="button" onclick="queryCompanyData()">查询Company数据</button>
-<button type="button" onclick="queryGoodsData()">查询Goods数据</button>
-<button type="button" onclick="queryHotNewsData()">查询HotNews数据</button>
-<button type="button" onclick="queryOrdersData()">查询Order数据</button>
-<button type="button" onclick="queryTravelRecordData()">查询TravelRecord数据</button>
-<button type="button" onclick="queryCustomerData()">查询Customer数据</button>
-<br/><br/>
+    <label>插入数据</label><br/>
+    <button type="button" style="width: 150px" onclick="addCompanyData()">插入Company数据</button>
+    <button type="button" style="width: 150px" onclick="addGoodsData()">插入Goods数据</button>
+    <button type="button" style="width: 150px" onclick="addHotNewsData()">插入HotNews数据</button>
+    <br/>
+    <button type="button" style="width: 150px" onclick="addOrdersData()">插入Order数据</button>
+    <button type="button" style="width: 150px" onclick="addTravelRecordData()">插入TravelRecord数据</button>
+    <button type="button" style="width: 150px" onclick="addCustomerData()">插入Customer数据</button>
+    <br/><br/>
 
-<textarea id="result" rows="50" cols="150">
-</textarea>
+    <label>查询数据</label><br/>
+    <button type="button" style="width: 150px" onclick="queryCompanyData()">查询Company数据</button>
+    <br/><label>等价于select * from company</label><br/><br/>
+
+    <button type="button" style="width: 150px" onclick="queryGoodsData()">查询Goods数据</button>
+    <br/><label>等价于select * from goods</label><br/><br/>
+
+    <button type="button" style="width: 150px" onclick="queryGoodsDataWithOption()">查询ID在[5,10]区间的Goods数据</button>
+    <br/><label>等价于select * from goods where id>=5 and id<=10</label><br/><br/>
+
+    <button type="button" style="width: 150px" onclick="queryHotNewsData()">查询HotNews数据</button>
+    <br/><label>等价于select * from hotnews</label><br/><br/>
+
+    <button type="button" style="width: 150px" onclick="queryOrdersData()">查询Order数据</button>
+    <br/><label>等价于select * from orders</label><br/><br/>
+
+    <button type="button" style="width: 150px" onclick="queryTravelRecordData()">查询TravelRecord数据</button>
+    <br/><label>等价于select * from travelrecord</label><br/><br/>
+
+    <button type="button" style="width: 150px" onclick="queryTravelRecordTop5Data()">查询前5条TravelRecord数据</button>
+    <br/><label>等价于select * from travelrecord limit 5</label><br/><br/>
+
+    <button type="button" style="width: 150px" onclick="queryCustomerData()">查询Customer数据</button>
+    <br/><label>等价于select * from customer, customer_addr where customer.id=customer_addr.customer_id</label><br/><br/>
+
+    <button type="button" style="width: 150px" onclick="queryCustomerDataWithOption()">查询所有性别为女的Customer数据</button>
+    <br/><label>等价于select * from customer, customer_addr where customer.id=customer_addr.customer_id and
+    gender=100000</label>
+
+</div>
+<div style="float: left;width: 70%;">
+    <textarea id="result" rows="80" cols="180"></textarea>
+</div>
 
 <script src="/jquery.min.js"></script>
 <script src="/bootstrap.min.js"></script>
-
-
 <script>
   function addCompanyData() {
+    $("#result").append("测试插入Company数据------->");
     $.ajax({
       url: '/add/company',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(data.data + "\n");
       }
     });
   }
 
   function addGoodsData() {
+    $("#result").append("测试插入Goods数据------->");
     $.ajax({
       url: '/add/goods',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(data.data + "\n");
       }
     });
   }
 
   function addHotNewsData() {
+    $("#result").append("测试插入HotNews数据------->");
     $.ajax({
       url: '/add/hotnews',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(data.data + "\n");
       }
     });
   }
 
   function addOrdersData() {
+    $("#result").append("测试插入Orders数据------->");
     $.ajax({
       url: '/add/orders',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(data.data + "\n");
       }
     });
   }
 
   function addTravelRecordData() {
+    $("#result").append("测试插入TravelRecord数据------->");
     $.ajax({
       url: '/add/travelrecord',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(data.data + "\n");
       }
     });
   }
 
   function addCustomerData() {
+    $("#result").append("测试插入Customer数据------->");
     $.ajax({
       url: '/add/customer',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(data.data + "\n");
       }
     });
   }
 
   function queryCompanyData() {
+    $("#result").append("测试查询Company数据------->");
     $.ajax({
       url: '/query/company',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(JSON.stringify(data.data) + "\n");
       }
     });
   }
 
   function queryGoodsData() {
+    $("#result").append("测试查询Goods数据------->");
     $.ajax({
       url: '/query/goods',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(JSON.stringify(data.data) + "\n");
+      }
+    });
+  }
+
+  function queryGoodsDataWithOption() {
+    $("#result").append("测试查询id在[5，10]区间的Goods数据------->");
+    $.ajax({
+      url: '/query/goods/range',
+      type: 'get',
+      dataType: 'json',
+      success: function (data) {
+        console.log(data);
+        $("#result").append(JSON.stringify(data.data) + "\n");
       }
     });
   }
 
   function queryHotNewsData() {
+    $("#result").append("测试查询HotNews数据------->");
     $.ajax({
       url: '/query/hotnews',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(JSON.stringify(data.data) + "\n");
       }
     });
   }
 
   function queryOrdersData() {
+    $("#result").append("测试查询Orders数据------->");
     $.ajax({
       url: '/query/orders',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(JSON.stringify(data.data) + "\n");
       }
     });
   }
 
   function queryTravelRecordData() {
+    $("#result").append("测试查询TravelRecord数据------->");
     $.ajax({
       url: '/query/travelrecord',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(JSON.stringify(data.data) + "\n");
+      }
+    });
+  }
+
+  function queryTravelRecordTop5Data() {
+    $("#result").append("测试查询前5条TravelRecord数据------->");
+    $.ajax({
+      url: '/query/travelrecord/top',
+      type: 'get',
+      dataType: 'json',
+      success: function (data) {
+        console.log(data);
+        $("#result").append(JSON.stringify(data.data) + "\n");
       }
     });
   }
 
   function queryCustomerData() {
+    $("#result").append("测试查询Customer数据------->");
     $.ajax({
       url: '/query/customer',
       type: 'get',
       dataType: 'json',
       success: function (data) {
         console.log(data);
-        $("#result").append(JSON.stringify(data) + "\n");
+        $("#result").append(JSON.stringify(data.data) + "\n");
+      }
+    });
+  }
+
+  function queryCustomerDataWithOption() {
+    $("#result").append("测试查询性别为女的Customer数据数据------->");
+    $.ajax({
+      url: '/query/customer/female',
+      type: 'get',
+      dataType: 'json',
+      success: function (data) {
+        console.log(data);
+        $("#result").append(JSON.stringify(data.data) + "\n");
+      }
+    });
+  }
+
+  function clearAllData() {
+    $("#result").append("测试删除数据------->");
+    $.ajax({
+      url: '/delete',
+      type: 'get',
+      dataType: 'json',
+      success: function (data) {
+        console.log(data);
+        $("#result").append(JSON.stringify(data.data) + "\n");
       }
     });
   }
 
 </script>
-
 </body>
 </html>

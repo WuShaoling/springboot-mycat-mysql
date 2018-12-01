@@ -5,13 +5,15 @@
         <id column="ID" property="id" jdbcType="BIGINT"/>
         <result column="customer_id" property="customerId" jdbcType="BIGINT"/>
         <result column="addr" property="addr" jdbcType="VARCHAR"/>
-        <result column="customer_id" property="customerId" jdbcType="BIGINT"/>
-        <result column="addr" property="addr" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         ID, customer_id, addr
     </sql>
+
+    <delete id="deleteAll">
+        delete from customer_addr
+    </delete>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select

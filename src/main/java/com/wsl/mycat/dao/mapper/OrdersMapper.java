@@ -10,6 +10,8 @@ public interface OrdersMapper {
 
     List<Orders> selectAll();
 
+    int deleteAll();
+
     int deleteByPrimaryKey(Long id);
 
     int insert(Orders record);

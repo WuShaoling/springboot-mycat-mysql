@@ -8,4 +8,7 @@ public interface GoodsService {
     String addData();
 
     List<Goods> queryData();
+
+    List<Goods> queryRangeData();
+
 }

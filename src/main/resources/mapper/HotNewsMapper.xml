@@ -16,6 +16,10 @@
         from hotnews
     </select>
 
+    <delete id="deleteAll">
+        delete from hotnews
+    </delete>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
         <include refid="Base_Column_List"/>

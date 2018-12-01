@@ -38,15 +38,14 @@ CREATE TABLE `travelrecord` (
   UNIQUE KEY `travelrecord_id_uindex` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 DROP TABLE IF EXISTS `goods`;
 CREATE TABLE `goods` (
   `ID` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
+  `types` int(11)  DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `goods_ID_uindex` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer` (

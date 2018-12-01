@@ -9,6 +9,10 @@
         ID, name
     </sql>
 
+    <delete id="deleteAll">
+        delete from company
+    </delete>
+
     <select id="selectAll" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

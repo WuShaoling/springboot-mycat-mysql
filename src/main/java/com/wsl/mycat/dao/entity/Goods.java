@@ -7,4 +7,6 @@ public class Goods {
     private Long id;
 
     private String name;
+
+    private Integer types;
 }

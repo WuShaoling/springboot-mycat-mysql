@@ -31,4 +31,9 @@ public class TravelRecordServiceImpl implements TravelRecordService {
     public List<TravelRecord> queryData() {
         return travelRecordMapper.selectAll();
     }
+
+    @Override
+    public List<TravelRecord> queryTopData() {
+        return travelRecordMapper.selectTopData();
+    }
 }

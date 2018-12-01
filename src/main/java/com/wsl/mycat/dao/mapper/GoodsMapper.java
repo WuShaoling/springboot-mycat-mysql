@@ -7,7 +7,12 @@ import java.util.List;
 
 @Mapper
 public interface GoodsMapper {
+
     List<Goods> selectAll();
+
+    List<Goods> selectRange();
+
+    int deleteAll();
 
     int deleteByPrimaryKey(Long id);
 

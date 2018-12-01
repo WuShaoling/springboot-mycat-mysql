@@ -9,6 +9,8 @@ import java.util.List;
 public interface CompanyMapper {
     List<Company> selectAll();
 
+    int deleteAll();
+
     int deleteByPrimaryKey(Long id);
 
     int insert(Company record);

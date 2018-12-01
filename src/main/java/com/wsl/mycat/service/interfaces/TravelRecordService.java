@@ -8,4 +8,6 @@ public interface TravelRecordService {
     String addData();
 
     List<TravelRecord> queryData();
+
+    List<TravelRecord> queryTopData();
 }

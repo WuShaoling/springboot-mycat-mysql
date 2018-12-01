@@ -11,12 +11,21 @@
     ID, area
   </sql>
 
+    <delete id="deleteAll">
+        delete from travelrecord
+    </delete>
+
     <select id="selectAll" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from travelrecord
     </select>
 
+    <select id="selectTopData" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from travelrecord limit 5
+    </select>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select

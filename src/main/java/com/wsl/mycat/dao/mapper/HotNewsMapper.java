@@ -10,6 +10,8 @@ public interface HotNewsMapper {
 
     List<HotNews> selectAll();
 
+    int deleteAll();
+
     int deleteByPrimaryKey(Long id);
 
     int insert(HotNews record);

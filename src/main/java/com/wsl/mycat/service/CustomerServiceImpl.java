@@ -50,4 +50,9 @@ public class CustomerServiceImpl implements CustomerService {
         return customerMapper.selectAll();
     }
 
+    @Override
+    public List<Customer> queryFemaleData() {
+        return customerMapper.selectAllFemale();
+    }
+
 }

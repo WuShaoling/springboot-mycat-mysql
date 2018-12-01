@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CustomerAddrMapper {
+
+    int deleteAll();
+
     int deleteByPrimaryKey(Long id);
 
     int insert(CustomerAddr record);

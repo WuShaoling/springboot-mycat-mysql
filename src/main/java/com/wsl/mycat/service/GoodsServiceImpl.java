@@ -19,9 +19,12 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public String addData() {
         int n = 20;
+
         for (int i = 1; i <= n; i++) {
             Goods goods = new Goods();
             goods.setName("good" + i);
+            goods.setId(Long.valueOf(i));
+            goods.setTypes(i % 3);
             goodsMapper.insertSelective(goods);
         }
         return "插入" + n + "条 Goods 数据成功";
@@ -30,5 +33,10 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<Goods> queryData() {
         return goodsMapper.selectAll();
+    }
+
+    @Override
+    public List<Goods> queryRangeData() {
+        return goodsMapper.selectRange();
     }
 }

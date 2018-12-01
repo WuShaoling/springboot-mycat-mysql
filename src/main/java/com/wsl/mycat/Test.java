@@ -86,14 +86,14 @@ public class Test {
 
     public static void insertCustomer() throws SQLException {
         stmt = conn.createStatement();
-        int zipcode;
-        for (int i = 1; i <= 50; i++) {
+        int gender;
+        for (int i = 1; i <= 20; i++) {
             if (i % 2 == 0) {
-                zipcode = 100000;
+                gender = 100000;
             } else {
-                zipcode = 100001;
+                gender = 100001;
             }
-            String sql = "insert into customer(id, name, gender) values(" + i + ", \"name" + i + "\", " + zipcode + ")";
+            String sql = "insert into customer(id, name, gender) values(" + i + ", \"name" + i + "\", " + gender + ")";
             System.out.println(sql);
             System.out.println(i + "-->" + stmt.execute(sql));
 
@@ -106,11 +106,11 @@ public class Test {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         getConnect();
-        insertCompany();
-        insertTravelRecord();
-        insertHotNews();
-        insertGoods();
-        insertOrders();
+//        insertCompany();
+//        insertTravelRecord();
+//        insertHotNews();
+//        insertGoods();
+//        insertOrders();
         insertCustomer();
         closeConnect();
     }

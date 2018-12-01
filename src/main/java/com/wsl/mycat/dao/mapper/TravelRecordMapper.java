@@ -10,6 +10,10 @@ public interface TravelRecordMapper {
 
     List<TravelRecord> selectAll();
 
+    List<TravelRecord> selectTopData();
+
+    int deleteAll();
+
     int deleteByPrimaryKey(Long id);
 
     int insert(TravelRecord record);

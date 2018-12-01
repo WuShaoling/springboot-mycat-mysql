@@ -20,4 +20,8 @@ public interface CustomerMapper {
     int updateByPrimaryKey(Customer record);
 
     List<Customer> selectAll();
+
+    List<Customer> selectAllFemale();
+
+    int deleteAll();
 }

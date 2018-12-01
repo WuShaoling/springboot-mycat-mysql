@@ -12,11 +12,23 @@
         customer.ID, customer.name, customer.gender, customer_addr.addr
     </sql>
 
+    <delete id="deleteAll">
+        delete from customer
+    </delete>
+
     <select id="selectAll" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from customer, customer_addr
         where customer.id = customer_addr.customer_id
+    </select>
+
+    <select id="selectAllFemale" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from customer, customer_addr
+        where customer.id = customer_addr.customer_id
+        and customer.gender = 100000
     </select>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
